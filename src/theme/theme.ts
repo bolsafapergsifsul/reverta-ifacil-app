@@ -23,6 +23,7 @@ export const theme = createTheme({
   },
   spacing: {
     s10: 10,
+    s14: 14,
   },
   borderRadii: {
     s8: 8,
