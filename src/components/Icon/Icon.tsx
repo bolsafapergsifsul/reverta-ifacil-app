@@ -5,6 +5,8 @@ import {LogoIcon} from '../../Brand/LogoIcon';
 import {useAppTheme} from '../../hooks/useAppTheme';
 import {ThemeColors} from '../../theme/theme';
 import {Pressable} from 'react-native';
+import {EyeOnIcon} from '../../assets/icons/EyeOnIcon';
+import {EyeOffIcon} from '../../assets/icons/EyeOffIcon';
 
 export interface IconBase {
   size?: number;
@@ -42,8 +44,10 @@ export function Icon({name, color = 'primary', size, onPress}: IconProps) {
 
 const iconRegistry = {
   arrowLeft: ArrowLeftIcon,
-  Logo: LogoIcon,
-  StickerCheck: StickerCheckIcon,
+  eyeOn: EyeOnIcon,
+  eyeOff: EyeOffIcon,
+  logo: LogoIcon,
+  stickerCheck: StickerCheckIcon,
 };
 
 type IconType = typeof iconRegistry;
