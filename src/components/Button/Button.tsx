@@ -22,7 +22,7 @@ export function Button({
   return (
     <TouchableOpacityBox
       paddingHorizontal="s14"
-      width={170}
+      width={206}
       height={47}
       alignItems="center"
       justifyContent="center"
@@ -35,6 +35,7 @@ export function Button({
         <Text
           preset="paragraphMedium"
           bold
+          textAlign="center"
           color={buttonPreset.default.content.color}
           {...buttonPreset.default.content.textProps}>
           {title}
