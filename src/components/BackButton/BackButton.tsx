@@ -1,12 +1,12 @@
 import React from 'react';
 import {TouchableOpacityBox} from '../Box/Box';
 import {Icon} from '../Icon/Icon';
+import {useNavigation} from '@react-navigation/native';
 
 export function BackButton() {
-  // TODO: implementar a lógica do botão de voltar quando tiver instalado o react-navigation
-
+  const navigation = useNavigation();
   return (
-    <TouchableOpacityBox flexDirection="row" alignItems="center">
+    <TouchableOpacityBox onPress={navigation.goBack} mt="s31">
       <Icon name="arrowLeft" color="primary" />
     </TouchableOpacityBox>
   );
