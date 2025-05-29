@@ -11,11 +11,7 @@ export function ScreenHeader({canGoBack, HeaderComponent, ...boxProps}: Props) {
   }
 
   return (
-    <Box
-      flexDirection="row"
-      alignItems="center"
-      justifyContent="space-between"
-      {...boxProps}>
+    <Box flexDirection="row" alignItems="center" {...boxProps}>
       {HeaderComponent}
       {canGoBack && <BackButton />}
     </Box>
