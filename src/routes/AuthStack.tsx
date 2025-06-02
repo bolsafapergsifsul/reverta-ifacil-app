@@ -9,6 +9,7 @@ import {ForgotPasswordScreen} from '../screens/auth/ForgotPasswordScreen/ForgotP
 import {CodeVerificationScreen} from '../screens/auth/CodeVerificationScreen/CodeVerificationScreen';
 import {NewPasswordScreen} from '../screens/auth/NewPasswordScreen/NewPasswordScreen';
 import {SignUpContactInfoScreen} from '../screens/auth/SignUpContactInfoScreen/SignUpContactInfoScreen';
+import {IconProps} from '../components/Icon/Icon';
 
 export type AuthStackParamList = {
   InitialScreen: undefined;
@@ -16,10 +17,14 @@ export type AuthStackParamList = {
   SelectTypeUserScreen: undefined;
   SignUpPersonalInfoScreen: undefined;
   SignUpContactInfoScreen: undefined;
-  SuccessScreen: undefined;
   ForgotPasswordScreen: undefined;
   CodeVerificationScreen: undefined;
   NewPasswordScreen: undefined;
+  SuccessScreen: {
+    title: string;
+    description: string;
+    icon: Pick<IconProps, 'name' | 'color'>;
+  };
 };
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();

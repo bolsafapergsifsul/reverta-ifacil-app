@@ -44,6 +44,7 @@ export const theme = createTheme({
     s93: 93,
     s95: 95,
     s123: 123,
+    s238: 238,
     s300: 300,
     s371: 371,
   },
