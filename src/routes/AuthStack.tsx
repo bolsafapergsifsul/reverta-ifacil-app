@@ -3,7 +3,7 @@ import React from 'react';
 import {InitialScreen} from '../screens/auth/InitialScreen/InitialScreen';
 import {LoginScreen} from '../screens/auth/LoginScreen/LoginScreen';
 import {SelectTypeUserScreen} from '../screens/auth/SelectTypeUserScreen/SelectTypeUserScreen';
-import {SignUpScreen} from '../screens/auth/SignUpScreen/SignUpScreen';
+import {SignUpPersonalInfoScreen} from '../screens/auth/SignUpPersonalInfoScreen/SignUpScreen';
 import {SuccessScreen} from '../screens/auth/SuccessScreen/SuccessScreen';
 import {ForgotPasswordScreen} from '../screens/auth/ForgotPasswordScreen/ForgotPasswordScreen';
 import {CodeVerificationScreen} from '../screens/auth/CodeVerificationScreen/CodeVerificationScreen';
@@ -13,7 +13,7 @@ export type AuthStackParamList = {
   InitialScreen: undefined;
   LoginScreen: undefined;
   SelectTypeUserScreen: undefined;
-  SignUpScreen: undefined;
+  SignUpPersonalInfoScreen: undefined;
   SuccessScreen: undefined;
   ForgotPasswordScreen: undefined;
   CodeVerificationScreen: undefined;
@@ -36,7 +36,10 @@ export function AuthStack() {
         name="SelectTypeUserScreen"
         component={SelectTypeUserScreen}
       />
-      <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+      <Stack.Screen
+        name="SignUpPersonalInfoScreen"
+        component={SignUpPersonalInfoScreen}
+      />
       <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
       <Stack.Screen
         name="ForgotPasswordScreen"

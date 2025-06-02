@@ -36,13 +36,17 @@ export const theme = createTheme({
     s31: 31,
     s42: 42,
     s46: 46,
+    s68: 68,
     s78: 78,
+    s80: 80,
+    s93: 93,
     s95: 95,
     s123: 123,
   },
   borderRadii: {
     s8: 8,
     s10: 10,
+    s13: 13,
   },
   textVariants: {
     defaults: {},

@@ -15,10 +15,10 @@ export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
 
   return (
     <Screen canGoBack>
-      <Text preset="paragraphMedium" mt="s26" bold>
+      <Text preset="headingMedium" mt="s26" bold>
         Bem-vindo de volta!
       </Text>
-      <Text preset="paragraphMedium" bold>
+      <Text preset="headingMedium" bold>
         Faça seu login
       </Text>
       <TextInput placeholder="Digite seu email" boxProps={{mt: 's46'}} />

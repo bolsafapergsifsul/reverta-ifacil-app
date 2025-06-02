@@ -7,7 +7,7 @@ import {Box} from '../../../components/Box/Box';
 import {Icon} from '../../../components/Icon/Icon';
 import {AuthScreenProps} from '../../../routes/navigationType';
 
-export function InitialScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
+export function InitialScreen({navigation}: AuthScreenProps<'InitialScreen'>) {
   function navigateToSelectTypeUserScreen() {
     navigation.navigate('SelectTypeUserScreen');
   }
