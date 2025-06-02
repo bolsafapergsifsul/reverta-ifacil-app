@@ -34,6 +34,7 @@ export const theme = createTheme({
     s26: 26,
     s30: 30,
     s31: 31,
+    s34: 34,
     s42: 42,
     s46: 46,
     s68: 68,

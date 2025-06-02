@@ -22,6 +22,10 @@ export function SelectTypeUserScreen({
     }
   }
 
+  function navigateTologinScreen() {
+    navigation.navigate('LoginScreen');
+  }
+
   return (
     <Screen canGoBack>
       <Text mt="s26" preset="headingMedium" bold>
@@ -54,6 +58,16 @@ export function SelectTypeUserScreen({
         <Button title="Avançar" onPress={navigateToSignUpPersonalInfoScreen} />
       </Box>
       <SocialAuthButtons title="Ou cadastra-se com" />
+      <Text preset="paragraphSmall" textAlign="center" mt="s34" medium>
+        Já tem uma conta?
+      </Text>
+      <Text
+        onPress={navigateTologinScreen}
+        color="primary"
+        textAlign="center"
+        bold>
+        Faça seu login
+      </Text>
     </Screen>
   );
 }
