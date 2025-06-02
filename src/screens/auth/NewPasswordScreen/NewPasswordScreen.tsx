@@ -10,7 +10,14 @@ export function NewPasswordScreen({
   navigation,
 }: AuthScreenProps<'NewPasswordScreen'>) {
   function navigateToSuccessScreen() {
-    navigation.navigate('SuccessScreen');
+    navigation.navigate('SuccessScreen', {
+      title: 'Tudo certo!',
+      description: 'Sua senha foi alterada com sucesso!',
+      icon: {
+        name: 'stickerCheck',
+        color: 'primary',
+      },
+    });
   }
 
   return (
