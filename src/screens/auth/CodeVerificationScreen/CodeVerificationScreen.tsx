@@ -4,8 +4,15 @@ import {Text} from '../../../components/Text/Text';
 import {Box} from '../../../components/Box/Box';
 import {TextInput} from '../../../components/TextInput/TextInput';
 import {Button} from '../../../components/Button/Button';
+import {AuthScreenProps} from '../../../routes/navigationType';
 
-export function CodeVerificationScreen() {
+export function CodeVerificationScreen({
+  navigation,
+}: AuthScreenProps<'CodeVerificationScreen'>) {
+  function navigateToNewPasswordScreen() {
+    navigation.navigate('NewPasswordScreen');
+  }
+
   return (
     <Screen canGoBack>
       <Text preset="headingMedium" mt="s26" bold>
@@ -21,7 +28,7 @@ export function CodeVerificationScreen() {
         <TextInput textAlign="center" />
       </Box>
       <Box mt="s42" gap="s24" alignItems="center">
-        <Button title="Verificar" />
+        <Button title="Verificar" onPress={navigateToNewPasswordScreen} />
         <Button title="Reenviar Código" />
       </Box>
       <Text mt="s300" textAlign="center" medium>
