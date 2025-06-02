@@ -13,6 +13,9 @@ export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
     navigation.navigate('SelectTypeUserScreen');
   }
 
+  function navigateToForgotPasswordScreen() {
+    navigation.navigate('ForgotPasswordScreen');
+  }
   return (
     <Screen canGoBack>
       <Text preset="headingMedium" mt="s26" bold>
@@ -23,7 +26,12 @@ export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
       </Text>
       <TextInput placeholder="Digite seu email" boxProps={{mt: 's46'}} />
       <PasswordInput placeholder="Digite sua senha" boxProps={{mt: 's24'}} />
-      <Text preset="paragraphSmall" textAlign="right" mt="s14" semiBold>
+      <Text
+        preset="paragraphSmall"
+        textAlign="right"
+        mt="s14"
+        onPress={navigateToForgotPasswordScreen}
+        semiBold>
         Esqueceu a senha?
       </Text>
       <Box alignItems="center" mt="s42">
