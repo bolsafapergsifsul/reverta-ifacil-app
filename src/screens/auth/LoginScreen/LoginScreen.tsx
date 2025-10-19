@@ -1,12 +1,16 @@
 import React from 'react';
 import {Screen} from '../../../components/Screen/Screen';
 import {Text} from '../../../components/Text/Text';
-import {TextInput} from '../../../components/TextInput/TextInput';
-import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
 import {Button} from '../../../components/Button/Button';
 import {Box} from '../../../components/Box/Box';
 import {SocialAuthButtons} from '../../../components/SocialAuthButtons/SocialAuthButtons';
 import {AuthScreenProps} from '../../../routes/navigationType';
+import {useAuthSignIn} from '../../../domain/Auth/useCases/useAuthSignIn';
+import {useForm} from 'react-hook-form';
+import {loginSchema, LoginSchema} from './loginSchema';
+import {zodResolver} from '@hookform/resolvers/zod';
+import {FormTextInput} from '../../../components/Form/FormTextInput';
+import {FormPasswordInput} from '../../../components/Form/FormPasswordInput';
 
 export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
   function navigateToSelectTypeUserScreen() {
@@ -16,6 +20,23 @@ export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
   function navigateToForgotPasswordScreen() {
     navigation.navigate('ForgotPasswordScreen');
   }
+
+  const {isLoading, signIn} = useAuthSignIn();
+
+  const {control, formState, handleSubmit} = useForm<LoginSchema>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    mode: 'onChange',
+  });
+
+  function submitForm({email, password}: LoginSchema) {
+    console.log('tel login:', {email, password});
+    signIn({email, password});
+  }
+
   return (
     <Screen canGoBack>
       <Text preset="headingMedium" mt="s26" bold>
@@ -24,8 +45,18 @@ export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
       <Text preset="headingMedium" bold>
         Faça seu login
       </Text>
-      <TextInput placeholder="Digite seu email" boxProps={{mt: 's46'}} />
-      <PasswordInput placeholder="Digite sua senha" boxProps={{mt: 's24'}} />
+      <FormTextInput
+        control={control}
+        name="email"
+        placeholder="Digite seu email"
+        boxProps={{mt: 's46'}}
+      />
+      <FormPasswordInput
+        control={control}
+        name="password"
+        placeholder="Digite sua senha"
+        boxProps={{mt: 's24'}}
+      />
       <Text
         preset="paragraphSmall"
         textAlign="right"
@@ -35,7 +66,12 @@ export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
         Esqueceu a senha?
       </Text>
       <Box alignItems="center" mt="s42">
-        <Button title="Entrar" />
+        <Button
+          title="Entrar"
+          loading={isLoading}
+          disabled={!formState.isValid}
+          onPress={handleSubmit(submitForm)}
+        />
       </Box>
       <SocialAuthButtons title="Ou entre com" />
       <Text mt="s123" textAlign="center" medium>

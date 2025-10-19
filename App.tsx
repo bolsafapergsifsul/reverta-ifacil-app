@@ -6,14 +6,26 @@ import {theme} from './src/theme/theme';
 
 import {Router} from './src/routes/Routes';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {AuthCredentialsProvider} from './src/services/authCredentials/Providers/AuthCredentialsProvider';
+import {initializeStorage} from './src/services/storage/storage';
+import {MMKVStorage} from './src/services/storage/implementation/MMKVStorage';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+
+initializeStorage(MMKVStorage);
+
+const queryClient = new QueryClient();
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaProvider>
-      <ThemeProvider theme={theme}>
-        <Router />
-      </ThemeProvider>
-    </SafeAreaProvider>
+    <AuthCredentialsProvider>
+      <QueryClientProvider client={queryClient}>
+        <SafeAreaProvider>
+          <ThemeProvider theme={theme}>
+            <Router />
+          </ThemeProvider>
+        </SafeAreaProvider>
+      </QueryClientProvider>
+    </AuthCredentialsProvider>
   );
 }
 
