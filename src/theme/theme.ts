@@ -9,6 +9,8 @@ export const palette = {
   gray2: '#1E232C',
   gray3: '#ADADAD',
   white: '#F1F1F1',
+  gray4: '#E1E1E1',
+  gray5: '#F5F5F5',
   red: '#FE3D3D',
 };
 

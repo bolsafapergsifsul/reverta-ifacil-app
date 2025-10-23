@@ -10,6 +10,8 @@ import {EyeOffIcon} from '../../assets/icons/EyeOffIcon';
 import {GoogleIcon} from '../../assets/icons/GoogleIcon';
 import {AppleIcon} from '../../assets/icons/AppleIcon';
 import {FacebookIcon} from '../../assets/icons/FacebookIcon';
+import {CheckRoundIcon} from '../../assets/icons/CheckRoundIcon';
+import {ErrorRoundIcon} from '../../assets/icons/ErrorRoundIcon';
 
 export interface IconBase {
   size?: number;
@@ -48,6 +50,8 @@ export function Icon({name, color = 'primary', size, onPress}: IconProps) {
 const iconRegistry = {
   apple: AppleIcon,
   arrowLeft: ArrowLeftIcon,
+  checkRound: CheckRoundIcon,
+  errorRound: ErrorRoundIcon,
   eyeOn: EyeOnIcon,
   eyeOff: EyeOffIcon,
   facebook: FacebookIcon,

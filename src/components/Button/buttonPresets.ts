@@ -12,8 +12,7 @@ export const buttonPresets: Record<
   ButtonPreset,
   {
     default: ButtonUI;
-    // TODO: adicionar variação disabled quando a designer definir o estilo
-    // disabled: ButtonUI;
+    disabled: ButtonUI;
   }
 > = {
   primary: {
@@ -25,6 +24,12 @@ export const buttonPresets: Record<
         color: 'white',
       },
     },
+    disabled: {
+      container: {
+        backgroundColor: 'gray4',
+      },
+      content: {color: 'gray2'},
+    },
   },
   outline: {
     default: {
@@ -35,6 +40,13 @@ export const buttonPresets: Record<
       content: {
         color: 'primary',
       },
+    },
+    disabled: {
+      container: {
+        borderWidth: 1,
+        borderColor: 'gray4',
+      },
+      content: {color: 'gray2'},
     },
   },
 };
