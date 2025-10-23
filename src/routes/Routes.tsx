@@ -8,7 +8,7 @@ export function Router() {
   const {authCredentials} = useAuthCredentials();
   return (
     <NavigationContainer>
-      {authCredentials?.token ? <AppStack /> : <AuthStack />}
+      {authCredentials?.refreshToken ? <AppStack /> : <AuthStack />}
     </NavigationContainer>
   );
 }

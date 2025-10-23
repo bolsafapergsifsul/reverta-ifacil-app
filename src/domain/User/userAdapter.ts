@@ -5,11 +5,16 @@ function toUser(userAPI: UserAPI): User {
     id: userAPI.id,
     name: userAPI.name,
     email: userAPI.email,
-    cep: userAPI.cep,
-    document: userAPI.document,
+    profilePic: userAPI.profilePic,
     phone: userAPI.phone,
+    document: userAPI.document,
+    zipCode: userAPI.zipCode,
+    street: userAPI.street,
     numberAddress: userAPI.numberAddress,
     complement: userAPI.complement,
+    neighborhood: userAPI.neighborhood,
+    city: userAPI.city,
+    state: userAPI.state,
   };
 }
 

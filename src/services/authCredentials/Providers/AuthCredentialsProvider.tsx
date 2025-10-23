@@ -4,14 +4,15 @@ import {AuthCredentials} from '../../../domain/Auth/authTypes';
 import {authCredentialsStorage} from '../authCredentialsStorage';
 import {authService} from '../../../domain/Auth/authService';
 import {User} from '../../../domain/User/userTypes';
+import {registerInterceptor} from '../../../api/apiConfig';
 
 export const AuthCredentialsContext = createContext<AuthCredentialsService>({
   authCredentials: null,
   userId: null,
+  isLoading: true,
   saveCredentials: async () => {},
   removeCredentials: async () => {},
   updateUser: () => {},
-  isLoading: false,
 });
 
 export function AuthCredentialsProvider({
@@ -25,10 +26,21 @@ export function AuthCredentialsProvider({
     startAuthCredentials();
   });
 
+  useEffect(() => {
+    const interceptor = registerInterceptor({
+      authCredentials,
+      removeCredentials,
+      saveCredentials,
+    });
+
+    return interceptor;
+  }, [authCredentials]);
+
   async function startAuthCredentials() {
     try {
       const ac = await authCredentialsStorage.get();
       if (ac) {
+        authService.updateToken(ac.token);
         setAuthCredentials(ac);
       }
     } catch (error) {

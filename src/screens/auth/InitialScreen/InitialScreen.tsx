@@ -9,7 +9,7 @@ import {AuthScreenProps} from '../../../routes/navigationType';
 
 export function InitialScreen({navigation}: AuthScreenProps<'InitialScreen'>) {
   function navigateToSelectTypeUserScreen() {
-    navigation.navigate('SelectTypeUserScreen');
+    navigation.navigate('SignUpScreen');
   }
 
   function navigateToLoginScreen() {

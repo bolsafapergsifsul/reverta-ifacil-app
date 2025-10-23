@@ -3,7 +3,6 @@ import {Screen} from '../../../components/Screen/Screen';
 import {Text} from '../../../components/Text/Text';
 import {Button} from '../../../components/Button/Button';
 import {Box} from '../../../components/Box/Box';
-import {SocialAuthButtons} from '../../../components/SocialAuthButtons/SocialAuthButtons';
 import {AuthScreenProps} from '../../../routes/navigationType';
 import {useAuthSignIn} from '../../../domain/Auth/useCases/useAuthSignIn';
 import {useForm} from 'react-hook-form';
@@ -13,12 +12,12 @@ import {FormTextInput} from '../../../components/Form/FormTextInput';
 import {FormPasswordInput} from '../../../components/Form/FormPasswordInput';
 
 export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
-  function navigateToSelectTypeUserScreen() {
-    navigation.navigate('SelectTypeUserScreen');
-  }
-
   function navigateToForgotPasswordScreen() {
     navigation.navigate('ForgotPasswordScreen');
+  }
+
+  function navigateToSingUpScreen() {
+    navigation.navigate('SignUpScreen');
   }
 
   const {isLoading, signIn} = useAuthSignIn();
@@ -73,7 +72,7 @@ export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
           onPress={handleSubmit(submitForm)}
         />
       </Box>
-      <SocialAuthButtons title="Ou entre com" />
+      {/* <SocialAuthButtons title="Ou entre com" /> */}
       <Text mt="s123" textAlign="center" medium>
         Ainda não tem uma conta?
       </Text>
@@ -82,7 +81,7 @@ export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
         textAlign="center"
         color="primary"
         bold
-        onPress={navigateToSelectTypeUserScreen}>
+        onPress={navigateToSingUpScreen}>
         Faça seu cadastro
       </Text>
     </Screen>

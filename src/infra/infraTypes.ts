@@ -3,3 +3,8 @@ export interface MutationOptions<TData> {
   onError?: (message: string) => void;
   errorMessage?: string;
 }
+
+export enum QueryKeys {
+  AsyncValidation = 'AsyncValidation',
+  IsEmailAvailable = 'IsEmailAvailable',
+}
