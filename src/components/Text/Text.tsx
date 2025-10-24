@@ -51,7 +51,8 @@ type TextVariants =
   | 'headingSmall'
   | 'paragraphLarge'
   | 'paragraphMedium'
-  | 'paragraphSmall';
+  | 'paragraphSmall'
+  | 'paragraphCaption';
 
 export const $fontSizes: Record<TextVariants, TextStyle> = {
   headingLarge: {
@@ -71,6 +72,9 @@ export const $fontSizes: Record<TextVariants, TextStyle> = {
   },
   paragraphSmall: {
     fontSize: 14,
+  },
+  paragraphCaption: {
+    fontSize: 12,
   },
 };
 
