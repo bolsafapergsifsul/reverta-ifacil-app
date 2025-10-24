@@ -1,5 +1,6 @@
 import Svg, {ClipPath, Defs, G, Path, Rect} from 'react-native-svg';
 import {IconBase} from '../components/Icon/Icon';
+import React from 'react';
 
 export function LogoIcon({size = 86}: IconBase) {
   return (
