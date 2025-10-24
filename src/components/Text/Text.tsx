@@ -48,6 +48,8 @@ function getFontFamily(bold?: boolean, semiBold?: boolean, medium?: boolean) {
 type TextVariants =
   | 'headingLarge'
   | 'headingMedium'
+  | 'headingSmall'
+  | 'paragraphLarge'
   | 'paragraphMedium'
   | 'paragraphSmall';
 
@@ -57,6 +59,12 @@ export const $fontSizes: Record<TextVariants, TextStyle> = {
   },
   headingMedium: {
     fontSize: 24,
+  },
+  headingSmall: {
+    fontSize: 20,
+  },
+  paragraphLarge: {
+    fontSize: 18,
   },
   paragraphMedium: {
     fontSize: 16,
