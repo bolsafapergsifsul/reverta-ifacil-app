@@ -26,6 +26,7 @@ export const theme = createTheme({
   },
   spacing: {
     s2: 2,
+    s4: 4,
     s8: 8,
     s10: 10,
     s12: 12,
