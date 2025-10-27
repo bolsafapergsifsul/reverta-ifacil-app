@@ -37,7 +37,6 @@ async function isEmailAvailable(params: {
   const response = await api.get<EmailIsAvailableAPI>('/auth/email-available', {
     params,
   });
-  console.log(response.data);
   return response.data;
 }
 

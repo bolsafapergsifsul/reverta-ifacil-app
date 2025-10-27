@@ -34,12 +34,8 @@ const defaultValues: SignUpSchema = {
   document: '',
   phone: '',
   zipCode: '',
-  street: '',
-  numberAddress: '',
-  complement: null,
-  neighborhood: '',
-  city: '',
-  state: '',
+  latitude: '',
+  longitude: '',
 };
 
 export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
@@ -58,7 +54,11 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
     });
 
   function submitForm(formValues: SignUpSchema) {
-    signUp(formValues);
+    signUp({
+      ...formValues,
+      latitude: parseFloat(formValues.latitude),
+      longitude: parseFloat(formValues.longitude),
+    });
   }
 
   const emailValidation = useAsyncValidation({
@@ -120,39 +120,15 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
       />
       <FormTextInput
         control={control}
-        name="street"
-        placeholder="Digite sua rua"
+        name="latitude"
+        placeholder="Digite sua latitude do seu endereço"
         boxProps={{mb: 's24'}}
       />
       <FormTextInput
         control={control}
-        name="numberAddress"
-        placeholder="Digite seu número"
+        name="longitude"
+        placeholder="Digite sua longitude do seu endereço"
         boxProps={{mb: 's24'}}
-      />
-      <FormTextInput
-        control={control}
-        name="complement"
-        placeholder="Digite seu complemento"
-        boxProps={{mb: 's24'}}
-      />
-      <FormTextInput
-        control={control}
-        name="neighborhood"
-        placeholder="Digite seu bairro"
-        boxProps={{mb: 's24'}}
-      />
-      <FormTextInput
-        control={control}
-        name="city"
-        placeholder="Digite sua cidade"
-        boxProps={{mb: 's24'}}
-      />
-      <FormTextInput
-        control={control}
-        name="state"
-        placeholder="Digite seu estado"
-        boxProps={{mb: 's80'}}
       />
       <Box justifyContent="center" alignItems="center" paddingBottom="s20">
         <Button

@@ -9,12 +9,8 @@ function toUser(userAPI: UserAPI): User {
     phone: userAPI.phone,
     document: userAPI.document,
     zipCode: userAPI.zipCode,
-    street: userAPI.street,
-    numberAddress: userAPI.numberAddress,
-    complement: userAPI.complement,
-    neighborhood: userAPI.neighborhood,
-    city: userAPI.city,
-    state: userAPI.state,
+    latitude: userAPI.latitude,
+    longitude: userAPI.longitude,
   };
 }
 

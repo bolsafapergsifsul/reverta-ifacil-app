@@ -45,12 +45,8 @@ export interface SignUpDataAPI {
   phone: string;
   document: string; // CPF or CNPJ
   zipCode: string; // CEP
-  street: string; // logradouro
-  numberAddress: string;
-  complement: string | null;
-  neighborhood: string; // bairro
-  city: string;
-  state: string;
+  latitude: number;
+  longitude: number;
 }
 
 export interface SignUpData {
@@ -61,10 +57,6 @@ export interface SignUpData {
   phone: string;
   document: string;
   zipCode: string;
-  street: string;
-  numberAddress: string;
-  complement: string | null;
-  neighborhood: string;
-  city: string;
-  state: string;
+  latitude: number;
+  longitude: number;
 }

@@ -6,12 +6,8 @@ export interface UserAPI {
   phone: string;
   document: string;
   zipCode: string;
-  street: string;
-  numberAddress: string;
-  complement: string | null;
-  neighborhood: string;
-  city: string;
-  state: string;
+  latitude: number;
+  longitude: number;
 }
 
 export interface User {
@@ -22,10 +18,6 @@ export interface User {
   phone: string;
   document: string;
   zipCode: string;
-  street: string;
-  numberAddress: string;
-  complement: string | null;
-  neighborhood: string;
-  city: string;
-  state: string;
+  latitude: number;
+  longitude: number;
 }

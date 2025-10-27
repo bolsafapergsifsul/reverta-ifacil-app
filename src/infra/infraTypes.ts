@@ -7,4 +7,6 @@ export interface MutationOptions<TData> {
 export enum QueryKeys {
   AsyncValidation = 'AsyncValidation',
   IsEmailAvailable = 'IsEmailAvailable',
+  GetAllEcoPoints = 'GetAllEcoPoints',
+  GetEcoPointById = 'GetEcoPointById',
 }
