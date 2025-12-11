@@ -41,12 +41,10 @@ export interface SignUpDataAPI {
   name: string;
   email: string;
   password: string;
-  profilePic: string | null;
-  phone: string;
+  phoneNumber: string;
   document: string; // CPF or CNPJ
   zipCode: string; // CEP
-  latitude: number;
-  longitude: number;
+  numberAddress: string;
 }
 
 export interface SignUpData {
@@ -54,9 +52,8 @@ export interface SignUpData {
   email: string;
   password: string;
   profilePic: string | null;
-  phone: string;
+  phoneNumber: string;
   document: string;
   zipCode: string;
-  latitude: number;
-  longitude: number;
+  numberAddress: string;
 }

@@ -25,13 +25,6 @@ export const mapScreenToProps: Record<
       unfocused: 'mapa',
     },
   },
-  SearchScreen: {
-    label: 'Buscar',
-    icon: {
-      focused: 'busca',
-      unfocused: 'busca',
-    },
-  },
   ColetasScreen: {
     label: 'Coletas',
     icon: {
@@ -39,11 +32,11 @@ export const mapScreenToProps: Record<
       unfocused: 'coleta',
     },
   },
-  AgendaScreen: {
-    label: 'Agenda',
+  SettingsScreen: {
+    label: 'Meu perfil',
     icon: {
-      focused: 'calendar',
-      unfocused: 'calendar',
+      focused: 'profileFill',
+      unfocused: 'profile',
     },
   },
 };

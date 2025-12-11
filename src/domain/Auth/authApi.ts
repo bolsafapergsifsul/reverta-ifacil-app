@@ -1,6 +1,5 @@
 import {AxiosRequestConfig} from 'axios';
 import {api} from '../../api/apiConfig';
-import {UserAPI} from '../User/userTypes';
 import {
   AuthCredentialsAPI,
   EditPasswordParam,
@@ -21,8 +20,8 @@ async function signIn(
   return response.data;
 }
 
-async function singUp(data: SignUpDataAPI): Promise<UserAPI> {
-  const response = await api.post<UserAPI>('/auth/signup', data);
+async function singUp(data: SignUpDataAPI): Promise<string> {
+  const response = await api.post<string>('/auth/signup', data);
   return response.data;
 }
 

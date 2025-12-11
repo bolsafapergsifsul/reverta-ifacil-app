@@ -6,9 +6,20 @@ import {Header} from '../../../components/Header/Header';
 import {Box} from '../../../components/Box/Box';
 import {useAuthCredentials} from '../../../services/authCredentials/useAuthCredentials';
 import {CardHome} from './components/CardHome/CardHome';
+import {AppTabScreenProps} from '../../../routes/navigationType';
 
-export function HomeScreen() {
+export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
   const {authCredentials} = useAuthCredentials();
+  function navigateToMapScreen() {
+    navigation.navigate('MapaScreen');
+  }
+
+  function navigateToHistoryCollectsScreen() {
+    navigation.navigate('ColetasScreen', {status: undefined});
+  }
+  function navigateToScheduleCollectScreen() {
+    navigation.navigate('ColetasScreen', {status: 'IN_PROGRESS'});
+  }
 
   return (
     <Screen HeaderComponent={<Header />} noPaddingHorizontal scrolllable>
@@ -24,22 +35,32 @@ export function HomeScreen() {
           paddingBottom="s29"
           borderRadius="s10">
           <Text preset="paragraphLarge" color="gray1">
-            Acesse o seu histórico de coletas
+            Conheça os pontos de coleta mais próximos e agende uma coleta de
+            materiais!
           </Text>
-          <Button title="Acessar" mt="s42" width={110} />
+          <Button
+            title="Acessar"
+            mt="s20"
+            width={110}
+            onPress={navigateToMapScreen}
+          />
         </Box>
         <Box mt="s30" flexDirection="row" gap="s60">
-          <CardHome title="Veja pontos de coleta" iconName="mapa" />
-          <CardHome title="Coletas em andamento" iconName="busca" />
+          <CardHome
+            title="Coletas agendadas"
+            iconName="calendar"
+            onPress={navigateToScheduleCollectScreen}
+          />
+          <CardHome
+            title="Histórico de coletas"
+            iconName="coleta"
+            onPress={navigateToHistoryCollectsScreen}
+          />
         </Box>
-        <Box mt="s36" flexDirection="row" gap="s60">
-          <CardHome title="Histórico de coletas" iconName="coleta" />
-          <CardHome title="Coletas agendadas" iconName="calendar" />
-        </Box>
-        <Text mt="s30" preset="headingSmall" bold>
+        {/* <Text mt="s30" preset="headingSmall" bold>
           Registrar uma coleta de materiais
         </Text>
-        <Button title="Registar" preset="outline" mt="s20" />
+        <Button title="Registar" preset="outline" mt="s20" /> */}
       </Box>
     </Screen>
   );

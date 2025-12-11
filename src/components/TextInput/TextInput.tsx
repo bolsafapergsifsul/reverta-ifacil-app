@@ -31,7 +31,7 @@ export function TextInput({
   const $textInputContainer: BoxProps = {
     flexDirection: 'row',
     borderWidth: errorMessage ? 2 : 1,
-    borderColor: errorMessage ? 'error' : 'white',
+    borderColor: errorMessage ? 'error' : 'gray4',
     borderRadius: 's8',
     paddingHorizontal: 's18',
     paddingVertical: 's14',

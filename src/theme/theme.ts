@@ -1,5 +1,5 @@
 import {createTheme} from '@shopify/restyle';
-import {ViewStyle} from 'react-native/types';
+import {BoxProps} from '../components/Box/Box';
 
 export const palette = {
   greenPrimaryLight: '#9EF091',
@@ -55,23 +55,25 @@ export const theme = createTheme({
     s238: 238,
     s300: 300,
     s371: 371,
+    s377: 377,
   },
   borderRadii: {
     s8: 8,
     s10: 10,
     s13: 13,
+    s60: 60,
   },
   textVariants: {
     defaults: {},
   },
 });
 
-export const $shadowProps: ViewStyle = {
-  elevation: 5,
-  shadowColor: '#000',
-  shadowOpacity: 0.1,
-  shadowRadius: 10,
-  shadowOffset: {width: 0, height: -2},
+export const $shadowProps: BoxProps = {
+  elevation: 10,
+  shadowColor: 'black1',
+  shadowOpacity: 0.05,
+  shadowRadius: 12,
+  shadowOffset: {width: 0, height: -3},
 };
 
 export type Theme = typeof theme;

@@ -6,16 +6,18 @@ import React from 'react';
 import {AppTabBar} from './AppTabBar';
 import {HomeScreen} from '../screens/app/HomeScreen/HomeScreen';
 import {MapaScreen} from '../screens/app/MapaScreen/MapaScreen';
-import {SearchScreen} from '../screens/app/SearchScreen/SearchScreen';
 import {ColetasScreen} from '../screens/app/ColetasScreen/ColetasScreen';
-import {AgendaScreen} from '../screens/app/AgendaScreen/AgrendaScreen';
+import {CollectStatusType} from '../domain/Collect/collectTypes';
+import {SettingsScreen} from '../screens/app/SettingsScreen/SettingsScreen';
 
 export type AppTabBottomTabParamList = {
   HomeScreen: undefined;
   MapaScreen: undefined;
-  SearchScreen: undefined;
-  ColetasScreen: undefined;
-  AgendaScreen: undefined;
+  ColetasScreen: {
+    status?: CollectStatusType;
+    isRefreshing?: boolean;
+  };
+  SettingsScreen: undefined;
 };
 
 const Tab = createBottomTabNavigator<AppTabBottomTabParamList>();
@@ -36,9 +38,8 @@ export function AppTabNavigator() {
       }}>
       <Tab.Screen name="HomeScreen" component={HomeScreen} />
       <Tab.Screen name="MapaScreen" component={MapaScreen} />
-      <Tab.Screen name="SearchScreen" component={SearchScreen} />
       <Tab.Screen name="ColetasScreen" component={ColetasScreen} />
-      <Tab.Screen name="AgendaScreen" component={AgendaScreen} />
+      <Tab.Screen name="SettingsScreen" component={SettingsScreen} />
     </Tab.Navigator>
   );
 }

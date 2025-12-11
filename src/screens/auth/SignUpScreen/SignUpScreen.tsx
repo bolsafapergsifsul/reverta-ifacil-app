@@ -30,12 +30,11 @@ const defaultValues: SignUpSchema = {
   name: '',
   email: '',
   password: '',
-  profilePic: null,
+  profilePic: '',
   document: '',
-  phone: '',
+  phoneNumber: '',
   zipCode: '',
-  latitude: '',
-  longitude: '',
+  numberAddress: '',
 };
 
 export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
@@ -56,8 +55,6 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
   function submitForm(formValues: SignUpSchema) {
     signUp({
       ...formValues,
-      latitude: parseFloat(formValues.latitude),
-      longitude: parseFloat(formValues.longitude),
     });
   }
 
@@ -108,7 +105,7 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
       />
       <FormTextInput
         control={control}
-        name="phone"
+        name="phoneNumber"
         placeholder="Digite seu telefone"
         boxProps={{mb: 's24'}}
       />
@@ -120,14 +117,8 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
       />
       <FormTextInput
         control={control}
-        name="latitude"
-        placeholder="Digite sua latitude do seu endereço"
-        boxProps={{mb: 's24'}}
-      />
-      <FormTextInput
-        control={control}
-        name="longitude"
-        placeholder="Digite sua longitude do seu endereço"
+        name="numberAddress"
+        placeholder="Digite o número do seu endereço"
         boxProps={{mb: 's24'}}
       />
       <Box justifyContent="center" alignItems="center" paddingBottom="s20">

@@ -3,9 +3,15 @@ export interface UserAPI {
   name: string;
   email: string;
   profilePic: string | null;
-  phone: string;
+  phoneNumber: string;
   document: string;
   zipCode: string;
+  street: string;
+  numberAddress: string;
+  neighborhood: string;
+  city: string;
+  state: string;
+  complement: null | string;
   latitude: number;
   longitude: number;
 }
@@ -15,9 +21,24 @@ export interface User {
   name: string;
   email: string;
   profilePic: string | null;
-  phone: string;
+  phoneNumber: string;
   document: string;
   zipCode: string;
+  street: string;
+  numberAddress: string;
+  neighborhood: string;
+  city: string;
+  state: string;
+  complement: null | string;
   latitude: number;
   longitude: number;
+}
+
+export interface UpdateUserParams {
+  name: string;
+  profilePic: string | null;
+  numberAddress: string;
+  phoneNumber: string;
+  document: string;
+  zipCode: string;
 }

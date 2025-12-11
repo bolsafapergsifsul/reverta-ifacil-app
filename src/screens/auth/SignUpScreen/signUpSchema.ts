@@ -8,10 +8,9 @@ export const signUpSchema = z.object({
   password: z.string().min(8, 'A senha deve ter no mínimo 6 caracteres'),
   document: z.string().regex(documentRegex, 'CPF inválido'),
   profilePic: z.string().nullable(),
-  phone: z.string().min(10, 'Telefone inválido'),
+  phoneNumber: z.string().min(10, 'Telefone inválido'),
   zipCode: z.string().min(8, 'CEP inválido'),
-  latitude: z.string(),
-  longitude: z.string(),
+  numberAddress: z.string().min(1, 'Número do endereço é obrigatório'),
 });
 
 export type SignUpSchema = z.infer<typeof signUpSchema>;

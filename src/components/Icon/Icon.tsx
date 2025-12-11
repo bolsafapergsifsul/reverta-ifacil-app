@@ -19,6 +19,8 @@ import {CalendarIcon} from '../../assets/icons/CalendarIcon';
 import {ColetaIcon} from '../../assets/icons/ColetaIcon';
 import {MapaIcon} from '../../assets/icons/MapaIcon';
 import {HomeIcon} from '../../assets/icons/HomeIcon';
+import {MarkerIcon} from '../../assets/icons/MarkerIcon';
+import {ProfileIcon} from '../../assets/icons/ProfileIcon';
 
 export interface IconBase {
   size?: number;
@@ -77,6 +79,8 @@ const iconRegistry = {
   logo: LogoIcon,
   logoHome: LogoHomeIcon,
   mapa: MapaIcon,
+  marker: MarkerIcon,
+  profile: ProfileIcon,
   profileFill: ProfileFillIcon,
   stickerCheck: StickerCheckIcon,
 };

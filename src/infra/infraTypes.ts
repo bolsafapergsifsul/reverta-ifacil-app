@@ -9,4 +9,7 @@ export enum QueryKeys {
   IsEmailAvailable = 'IsEmailAvailable',
   GetAllEcoPoints = 'GetAllEcoPoints',
   GetEcoPointById = 'GetEcoPointById',
+  SearchAllNearby = 'SearchAllNearby',
+  GetAllCollectsByUserId = 'GetAllCollectsByUserId',
+  GetCollectById = 'GetCollectById',
 }

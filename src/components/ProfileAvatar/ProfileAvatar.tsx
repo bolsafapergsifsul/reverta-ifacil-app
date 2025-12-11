@@ -13,7 +13,6 @@ export function ProfileAvatar({
   imageUrl,
   size = 48,
   borderRadius = 24,
-  userId,
 }: ProfileAVatarProps) {
   // TODO: implementar navegação para o perfil do usuário ao clicar no avatar
 

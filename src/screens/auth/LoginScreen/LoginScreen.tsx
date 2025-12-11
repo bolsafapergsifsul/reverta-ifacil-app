@@ -32,7 +32,6 @@ export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
   });
 
   function submitForm({email, password}: LoginSchema) {
-    console.log('tel login:', {email, password});
     signIn({email, password});
   }
 

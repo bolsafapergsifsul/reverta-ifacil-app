@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "227992833210",
+    "project_id": "bolsa-fapergs",
+    "storage_bucket": "bolsa-fapergs.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227992833210:android:5a4ecad59c9077eef18683",
+        "android_client_info": {
+          "package_name": "com.revertaifacilapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzeSBTe0yzcNNY-8OPSgiMTYvPL3XmP-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
