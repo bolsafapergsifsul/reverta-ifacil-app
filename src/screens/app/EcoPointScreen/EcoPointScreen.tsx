@@ -33,7 +33,7 @@ export function EcoPointScreen({
           <Text
             mt="s10"
             preset="paragraphMedium">{`${ecoPoint?.street}, ${ecoPoint?.numberAddress} - ${ecoPoint?.neighborhood}, ${ecoPoint?.city} - ${ecoPoint?.state}`}</Text>
-          <Text mt="s10" preset="paragraphMedium" color="primary">
+          <Text mt="s10" preset="paragraphMedium" medium>
             {ecoPoint?.serviceHours}
           </Text>
           {ecoPoint?.phoneNumber && (

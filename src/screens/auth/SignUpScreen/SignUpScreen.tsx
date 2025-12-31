@@ -67,7 +67,7 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
   });
 
   return (
-    <Screen canGoBack scrolllable>
+    <Screen canGoBack scrolllable flex={1}>
       <Text preset="headingMedium" bold mb="s24">
         Criar uma conta
       </Text>

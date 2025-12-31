@@ -9,7 +9,7 @@ export function BackButton(props: BackButtonProps) {
   const navigation = useNavigation();
   return (
     <TouchableOpacityBox onPress={navigation.goBack} mt="s31" {...props}>
-      <Icon name="arrowLeft" color="primary" />
+      <Icon name="arrowLeft" color="primary" size={35} />
     </TouchableOpacityBox>
   );
 }

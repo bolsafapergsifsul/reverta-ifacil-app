@@ -16,7 +16,7 @@ export function RescheduleCollectScreen({
   const originalDate = new Date(date);
   const today = new Date().toISOString().split('T')[0];
   const nextDay = new Date(originalDate);
-  nextDay.setDate(originalDate.getDate() + 1);
+  nextDay.setDate(originalDate.getDate());
   const [selectedDate, setSelectedDate] = React.useState(
     formatDateToYMD(nextDay),
   );

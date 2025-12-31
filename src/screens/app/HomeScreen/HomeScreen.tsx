@@ -18,7 +18,7 @@ export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
     navigation.navigate('ColetasScreen', {status: undefined});
   }
   function navigateToScheduleCollectScreen() {
-    navigation.navigate('ColetasScreen', {status: 'IN_PROGRESS'});
+    navigation.navigate('ColetasScreen', {status: 'PENDING'});
   }
 
   return (

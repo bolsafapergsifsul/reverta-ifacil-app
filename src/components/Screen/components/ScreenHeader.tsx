@@ -14,7 +14,7 @@ export function ScreenHeader({canGoBack, HeaderComponent, ...boxProps}: Props) {
     <Box flexDirection="column" {...boxProps}>
       {HeaderComponent}
       {canGoBack && (
-        <BackButton paddingHorizontal={HeaderComponent ? 's31' : undefined} />
+        <BackButton paddingHorizontal={HeaderComponent ? 's18' : undefined} />
       )}
     </Box>
   );

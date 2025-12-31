@@ -2,8 +2,8 @@ import axios from 'axios';
 import {AuthCredentials} from '../domain/Auth/authTypes';
 import {authService} from '../domain/Auth/authService';
 //export const BASE_URL = 'http://172.26.112.1:3000'; // ifsul
-export const BASE_URL = 'http://192.168.0.58:3000';
-//export const BASE_URL = 'https://reverta-ifacil-api.vercel.app';
+//export const BASE_URL = 'http://192.168.0.58:3000';
+export const BASE_URL = 'https://reverta-ifacil-api.vercel.app';
 
 export const api = axios.create({
   baseURL: BASE_URL,

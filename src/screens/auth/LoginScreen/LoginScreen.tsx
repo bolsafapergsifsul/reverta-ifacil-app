@@ -10,6 +10,7 @@ import {loginSchema, LoginSchema} from './loginSchema';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {FormTextInput} from '../../../components/Form/FormTextInput';
 import {FormPasswordInput} from '../../../components/Form/FormPasswordInput';
+import {useToastService} from '../../../services/toast/useToast';
 
 export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
   function navigateToForgotPasswordScreen() {
@@ -20,7 +21,10 @@ export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
     navigation.navigate('SignUpScreen');
   }
 
-  const {isLoading, signIn} = useAuthSignIn();
+  const {showToast} = useToastService();
+  const {isLoading, signIn} = useAuthSignIn({
+    onError: message => showToast({message, type: 'error'}),
+  });
 
   const {control, formState, handleSubmit} = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
