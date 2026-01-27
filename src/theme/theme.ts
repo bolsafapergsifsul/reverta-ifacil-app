@@ -2,27 +2,33 @@ import {createTheme} from '@shopify/restyle';
 import {BoxProps} from '../components/Box/Box';
 
 export const palette = {
-  greenPrimaryLight: '#9EF091',
-  greenPrimary: '#319E42',
-  black1: '#000000',
-  gray1: '#323232',
-  gray2: '#1E232C',
-  gray3: '#ADADAD',
-  white: '#F1F1F1',
-  gray4: '#E1E1E1',
-  gray5: '#F5F5F5',
-  red: '#FE3D3D',
+  green700: '#2E7D32',
+  green600: '#388E3C',
+  green100: "#E8F5E9",
+  white: '#FFFFFF',
+  black: '#000000',
+  gray50: '#F5F7F6',
+  gray100: '#E5E7EB',
+  gray500: '#6B7280',
+  gray900: '#1F2937',
+  orange: '#F9A825',
+  red: '#D32F2F',
+  blue: '#0288D1',
+  brown: '#8D6E63'
 };
 
 export const theme = createTheme({
   colors: {
     ...palette,
-    primary: palette.greenPrimary,
-    primaryContrast: palette.gray1,
-
-    backgroud: palette.greenPrimaryLight,
-
+    primary: palette.green700,
+    background: palette.gray50,
+    backgroundSmooth: palette.green100,
+    textPrimary: palette.gray900,
+    textSecondary: palette.gray500,
+    success: palette.green700,
+    warning: palette.orange,
     error: palette.red,
+    info: palette.blue
   },
   spacing: {
     s2: 2,
@@ -70,7 +76,7 @@ export const theme = createTheme({
 
 export const $shadowProps: BoxProps = {
   elevation: 10,
-  shadowColor: 'black1',
+  shadowColor: 'black',
   shadowOpacity: 0.05,
   shadowRadius: 12,
   shadowOffset: {width: 0, height: -3},
