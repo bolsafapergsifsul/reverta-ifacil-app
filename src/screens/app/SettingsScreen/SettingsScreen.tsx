@@ -25,7 +25,7 @@ export function SettingsScreen({
         <Text preset="headingMedium" bold>
           {authCredentials.user.name}
         </Text>
-        <Box borderBottomColor="gray3" borderBottomWidth={1} pb="s20" mt="s36">
+        <Box borderBottomColor="gray100" borderBottomWidth={1} pb="s20" mt="s36">
           <Text
             semiBold
             preset="headingSmall"
@@ -33,7 +33,7 @@ export function SettingsScreen({
             Alterar meus dados
           </Text>
         </Box>
-        <Box mt="s20" borderBottomColor="gray3" borderBottomWidth={1} pb="s20">
+        <Box mt="s20" borderBottomColor="gray100" borderBottomWidth={1} pb="s20">
           <Text preset="headingSmall" onPress={signOut} semiBold>
             Sair
           </Text>

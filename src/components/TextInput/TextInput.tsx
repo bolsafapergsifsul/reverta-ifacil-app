@@ -31,12 +31,11 @@ export function TextInput({
   const $textInputContainer: BoxProps = {
     flexDirection: 'row',
     borderWidth: errorMessage ? 2 : 1,
-    borderColor: errorMessage ? 'error' : 'gray4',
+    borderColor: errorMessage ? 'error' : 'gray100',
     borderRadius: 's8',
     paddingHorizontal: 's18',
     paddingVertical: 's14',
   };
-
   function focusInput() {
     inputRef.current?.focus();
   }
@@ -56,7 +55,7 @@ export function TextInput({
           <RNTextInput
             autoCapitalize="none"
             ref={inputRef}
-            placeholderTextColor={colors.gray3}
+            placeholderTextColor={colors.textSecondary}
             style={$textInputStyle}
             {...rnTextInputProps}
           />
@@ -80,7 +79,7 @@ export const $textInputStyle: TextStyle = {
   padding: 0,
   flexGrow: 1,
   flexShrink: 1,
-  color: palette.black1,
+  color: palette.gray900,
   fontFamily: $fontFamily.regular,
   ...$fontSizes.paragraphSmall,
 };

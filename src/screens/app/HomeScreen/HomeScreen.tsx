@@ -34,7 +34,7 @@ export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
           paddingTop="s19"
           paddingBottom="s29"
           borderRadius="s10">
-          <Text preset="paragraphLarge" color="gray1">
+          <Text preset="paragraphLarge" color="textSecondary">
             Conheça os pontos de coleta mais próximos e agende uma coleta de
             materiais!
           </Text>

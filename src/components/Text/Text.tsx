@@ -24,7 +24,7 @@ export function Text({
   const fontFamily = getFontFamily(bold, semiBold, medium);
   return (
     <RNText
-      color="primaryContrast"
+      color="textPrimary"
       style={[$fontSizes[preset], {fontFamily}, style]}
       {...rnTextProps}>
       {children}

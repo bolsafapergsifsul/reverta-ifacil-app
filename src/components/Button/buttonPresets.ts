@@ -21,32 +21,32 @@ export const buttonPresets: Record<
         backgroundColor: 'primary',
       },
       content: {
-        color: 'white',
+        color: "background",
       },
     },
     disabled: {
       container: {
-        backgroundColor: 'gray4',
+        backgroundColor: "gray100",
       },
-      content: {color: 'gray2'},
+      content: {color: 'gray500'},
     },
   },
   outline: {
     default: {
       container: {
         borderWidth: 3,
-        borderColor: 'primary',
+        borderColor: "green600",
       },
       content: {
-        color: 'primary',
+        color: "green600",
       },
     },
     disabled: {
       container: {
         borderWidth: 1,
-        borderColor: 'gray4',
+        borderColor: 'gray100',
       },
-      content: {color: 'gray2'},
+      content: {color: 'gray500'},
     },
   },
 };

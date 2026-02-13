@@ -17,7 +17,7 @@ export function InitialScreen({navigation}: AuthScreenProps<'InitialScreen'>) {
   }
 
   return (
-    <Screen>
+    <Screen backgroundColor="backgroundSmooth">
       <Box mt="s95">
         <Image
           source={require('../../../assets/images/image-initial-screen.png')}

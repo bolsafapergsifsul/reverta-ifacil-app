@@ -63,6 +63,8 @@ export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
         preset="paragraphSmall"
         textAlign="right"
         mt="s14"
+        color="primary"
+        bold
         onPress={navigateToForgotPasswordScreen}
         semiBold>
         Esqueceu a senha?
