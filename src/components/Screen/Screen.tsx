@@ -5,6 +5,7 @@ import {ScrollViewContainer, ViewContainer} from './components/ScreenContainer';
 import {KeyboardAvoidingView, Platform} from 'react-native';
 import {ScreenHeader} from './components/ScreenHeader';
 import {useAppSafeArea} from '../../hooks/useAppSafeArea';
+import { ThemeColors } from '../../theme/theme';
 
 export interface ScreenProps extends BoxProps {
   children: React.ReactNode;
@@ -14,6 +15,7 @@ export interface ScreenProps extends BoxProps {
   noPaddingHorizontal?: boolean;
   paddingHorizontalHeader?: boolean;
   noPaddingBottom?: boolean;
+  backgroundColor?: ThemeColors;
 }
 
 export function Screen({
@@ -25,18 +27,20 @@ export function Screen({
   noPaddingBottom = false,
   style,
   HeaderComponent,
+  backgroundColor = "white",
   ...boxProps
 }: ScreenProps) {
   const {bottom, top} = useAppSafeArea();
   const {colors} = useAppTheme();
   const Container = scrolllable ? ScrollViewContainer : ViewContainer;
-
   return (
     <KeyboardAvoidingView
-      style={{flex: 1, backgroundColor: colors.white}}
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <Container backgroundColor={colors.backgroud}>
+      style={{flex: 1, backgroundColor: colors[backgroundColor]}}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}>
+      <Container backgroundColor={colors[backgroundColor]} bottomInset={bottom}>
         <Box
+          flex={1}
           paddingHorizontal={noPaddingHorizontal ? undefined : 's31'}
           style={[
             {paddingTop: top, paddingBottom: noPaddingBottom ? 0 : bottom},

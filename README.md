@@ -1,97 +1,128 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Reverta iFacil
 
-# Getting Started
+Aplicativo mobile para agendamento e gerenciamento de coletas de materiais reciclaveis, conectando usuarios a ecopontos proximos.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Sobre o Projeto
 
-## Step 1: Start Metro
+O **Reverta iFacil** e uma plataforma mobile que facilita o descarte consciente de residuos reciclaveis. O usuario pode localizar ecopontos proximos no mapa, agendar coletas de materiais, acompanhar o status das coletas e gerenciar seu perfil — tudo de forma simples e intuitiva.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Funcionalidades
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### Autenticacao
+- Cadastro com captura automatica de localizacao (GPS)
+- Login com email e senha
+- Recuperacao de senha via codigo de verificacao por email
+- Sessao persistente com refresh token
 
-```sh
-# Using npm
-npm start
+### Mapa e Ecopontos
+- Mapa interativo (Google Maps) com marcadores dos ecopontos
+- Busca de ecopontos por CEP ou localizacao atual
+- Tela de detalhes do ecoponto com horario de funcionamento, materiais aceitos, telefone e imagens
 
-# OR using Yarn
-yarn start
+### Agendamento de Coletas
+- Selecao de data via calendario
+- Escolha de materiais reciclaveis
+- Estimativa de peso
+- Campo de observacoes
+
+### Gerenciamento de Coletas
+- Listagem com filtros por status (Pendente, Em Andamento, Concluida, Cancelada)
+- Detalhes da coleta
+- Reagendamento e cancelamento
+- Pull-to-refresh
+
+### Dashboard (Home)
+- Saudacao com nome do usuario
+- Cards de acesso rapido: mapa, coletas em andamento, historico, agendamentos
+- Botao de nova coleta
+
+### Perfil e Configuracoes
+- Visualizacao e edicao de dados pessoais e endereco
+- Logout
+
+## Tecnologias
+
+| Categoria | Tecnologia |
+|---|---|
+| Framework | React Native 0.79 + React 19 |
+| Linguagem | TypeScript |
+| Navegacao | React Navigation 7 (Stack + Bottom Tabs) |
+| Estado servidor | TanStack React Query 5 |
+| Estado local | Zustand |
+| Formularios | React Hook Form + Zod |
+| Estilizacao | @shopify/restyle |
+| HTTP | Axios |
+| Mapas | react-native-maps |
+| Geolocalizacao | react-native-geolocation-service |
+| Armazenamento | react-native-mmkv |
+| Backend/Storage | Firebase (Firestore + Storage) |
+| Calendario | react-native-calendars |
+| Imagens | react-native-image-picker / image-crop-picker |
+
+## Arquitetura
+
+O projeto segue **Clean Architecture** com separacao por dominio:
+
+```
+src/
+├── api/              # Configuracao do Axios (interceptors, refresh token)
+├── assets/           # Imagens, icones e fontes
+├── Brand/            # Logo e identidade visual
+├── components/       # Componentes reutilizaveis (Button, TextInput, Screen, Toast, etc.)
+├── domain/           # Logica de negocio por dominio
+│   ├── Auth/         # Autenticacao (types, api, adapter, service, useCases)
+│   ├── Collect/      # Coletas
+│   ├── EcoPoint/     # Ecopontos
+│   └── User/         # Usuario
+├── form/             # Utilitarios de formulario (validacao async)
+├── hooks/            # Hooks customizados
+├── routes/           # Navegacao (AuthStack, AppStack, TabNavigator)
+├── screens/          # Telas organizadas por contexto (auth/ e app/)
+├── services/         # Servicos de infraestrutura (storage, auth credentials, toast)
+├── theme/            # Sistema de design (cores, espacamentos, tipografia)
+└── utils/            # Funcoes utilitarias
 ```
 
-## Step 2: Build and run your app
+Cada dominio segue o fluxo:
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+```
+API Response → Adapter → Service → useCase (React Query hook) → Componente
+```
+
+## Como Executar
+
+### Pre-requisitos
+
+- Node.js >= 18
+- Yarn 4
+- Ambiente React Native configurado ([guia oficial](https://reactnative.dev/docs/set-up-your-environment))
+
+### Instalacao
+
+```bash
+yarn install
+```
 
 ### Android
 
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
+```bash
 yarn android
 ```
 
 ### iOS
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
+```bash
 bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
 bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
 yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## Scripts
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+| Comando | Descricao |
+|---|---|
+| `yarn start` | Inicia o Metro bundler |
+| `yarn android` | Build e execucao no Android |
+| `yarn ios` | Build e execucao no iOS |
+| `yarn lint` | Executa o ESLint |
+| `yarn test` | Executa os testes com Jest |

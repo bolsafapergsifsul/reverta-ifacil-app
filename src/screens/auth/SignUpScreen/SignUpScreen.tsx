@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {Platform, PermissionsAndroid} from 'react-native';
+import Geolocation from 'react-native-geolocation-service';
 import {Screen} from '../../../components/Screen/Screen';
 import {Text} from '../../../components/Text/Text';
 import {AuthStackParamList} from '../../../routes/AuthStack';
@@ -15,6 +17,7 @@ import {ActivityIndicator} from '../../../components/ActivityIndicator/ActivityI
 import {FormPasswordInput} from '../../../components/Form/FormPasswordInput';
 import {Button} from '../../../components/Button/Button';
 import {Box} from '../../../components/Box/Box';
+import {useToast, useToastService} from '../../../services/toast/useToast';
 
 const resetParam: AuthStackParamList['SuccessScreen'] = {
   title: 'Sua conta foi criada com sucesso!',
@@ -39,9 +42,47 @@ const defaultValues: SignUpSchema = {
 
 export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
   const {reset} = useResetNavigationSuccess();
+  const {showToast} = useToastService();
+  const [location, setLocation] = useState<{
+    latitude: number;
+    longitude: number;
+  } | null>(null);
+
+  useEffect(() => {
+    async function requestLocationPermission() {
+      if (Platform.OS === 'android') {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        );
+        if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
+          return;
+        }
+      }
+
+      Geolocation.getCurrentPosition(
+        position => {
+          setLocation({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+        },
+        () => {},
+        {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
+      );
+    }
+
+    requestLocationPermission();
+  }, []);
+
   const {signUp, isLoading} = useAuthSignUp({
     onSuccess: () => {
       reset(resetParam);
+    },
+    onError: message => {
+      showToast({
+        type: 'error',
+        message: message,
+      });
     },
   });
 
@@ -55,6 +96,8 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
   function submitForm(formValues: SignUpSchema) {
     signUp({
       ...formValues,
+      latitude: location?.latitude ?? 0,
+      longitude: location?.longitude ?? 0,
     });
   }
 
@@ -68,10 +111,9 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
 
   return (
     <Screen canGoBack scrolllable flex={1}>
-      <Text preset="headingMedium" bold mb="s24">
+      <Text preset="headingMedium" bold mt="s26" mb="s24">
         Criar uma conta
       </Text>
-
       <FormTextInput
         control={control}
         name="name"
@@ -90,7 +132,6 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
         }
         boxProps={{mb: 's24'}}
       />
-
       <FormPasswordInput
         control={control}
         name="password"
@@ -121,7 +162,7 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
         placeholder="Digite o número do seu endereço"
         boxProps={{mb: 's24'}}
       />
-      <Box justifyContent="center" alignItems="center" paddingBottom="s20">
+      <Box mb="s20">
         <Button
           title="Cadastrar"
           loading={isLoading}

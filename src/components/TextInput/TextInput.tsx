@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import {Box, BoxProps} from '../Box/Box';
 import {useAppTheme} from '../../hooks/useAppTheme';
-import {$shadowProps, palette} from '../../theme/theme';
+import {palette} from '../../theme/theme';
 import {$fontFamily, $fontSizes, Text} from '../Text/Text';
 
 export interface TextInputProps extends RNTextInputProps {
@@ -35,18 +35,22 @@ export function TextInput({
     borderRadius: 's8',
     paddingHorizontal: 's18',
     paddingVertical: 's14',
+    backgroundColor: 'background',
+    shadowColor: 'black',
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    shadowOffset: {width: 0, height: 2},
+    elevation: 2,
   };
+
   function focusInput() {
     inputRef.current?.focus();
   }
 
   return (
-    <Box flexGrow={1} flexShrink={1} {...boxProps}>
-      <Pressable onPress={focusInput} {...$shadowProps}>
-        <Box
-          {...$textInputContainer}
-          {...containerProps}
-          backgroundColor="white">
+    <Box flexShrink={1} {...boxProps}>
+      <Pressable onPress={focusInput}>
+        <Box {...$textInputContainer} {...containerProps}>
           {LeftComponent && (
             <Box justifyContent="center" mr="s12">
               {LeftComponent}

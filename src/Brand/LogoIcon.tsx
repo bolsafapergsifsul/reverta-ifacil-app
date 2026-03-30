@@ -3,8 +3,9 @@ import {IconBase} from '../components/Icon/Icon';
 import React from 'react';
 
 export function LogoIcon({size = 86}: IconBase) {
+  const height = Math.round(size * 80 / 86);
   return (
-    <Svg width={size} height="80" viewBox="0 0 86 80" fill="none">
+    <Svg width={size} height={height} viewBox="0 0 86 80" fill="none">
       <G clipPath="url(#clip0_35_838)">
         <Path
           fillRule="evenodd"
@@ -57,7 +58,7 @@ export function LogoIcon({size = 86}: IconBase) {
       </G>
       <Defs>
         <ClipPath id="clip0_35_838">
-          <Rect width={size} height="80" fill="white" />
+          <Rect width={86} height={80} fill="white" />
         </ClipPath>
       </Defs>
     </Svg>

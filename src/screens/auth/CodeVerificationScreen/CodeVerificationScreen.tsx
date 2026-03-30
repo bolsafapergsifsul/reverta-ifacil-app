@@ -7,14 +7,14 @@ import {AuthScreenProps} from '../../../routes/navigationType';
 import {useResetNavigation} from '../../../hooks/useResetNavigation';
 import {useToastService} from '../../../services/toast/useToast';
 import {useAuthValidateResetCode} from '../../../domain/Auth/useCases/useAuthValidateResetCode';
-import {useForm} from 'react-hook-form';
+import {useForm, Controller} from 'react-hook-form';
 import {
   codeVerificationSchema,
   CodeVerificationSchema,
 } from './codeVerificationSchema';
 import {zodResolver} from '@hookform/resolvers/zod';
-import {FormTextInput} from '../../../components/Form/FormTextInput';
 import {useAuthSendResetCode} from '../../../domain/Auth/useCases/useAuthSendResetCode';
+import {OtpInput} from '../../../components/OtpInput/OtpInput';
 
 export function CodeVerificationScreen({
   route,
@@ -62,33 +62,32 @@ export function CodeVerificationScreen({
       <Text mt="s10" medium>
         Insira abaixo o código de 4 dígitos que enviamos para o seu email
       </Text>
-      {/* <Box mt="s24" gap="s16" flexDirection="row">
-        <TextInput textAlign="center" />
-        <TextInput textAlign="center" />
-        <TextInput textAlign="center" />
-        <TextInput textAlign="center" />
-      </Box> */}
-      <FormTextInput
+      <Controller
         control={control}
         name="code"
-        placeholder="Código"
-        boxProps={{mt: 's24'}}
+        render={({field}) => (
+          <Box mt="s24">
+            <OtpInput value={field.value} onChange={field.onChange} />
+          </Box>
+        )}
       />
-      <Box mt="s42" gap="s24" alignItems="center">
+      <Box mt="s42" gap="s14">
         <Button
           title="Verificar"
           loading={isLoading}
           disabled={!formState.isValid}
           onPress={handleSubmit(submitForm)}
         />
-        <Button title="Reenviar Código" onPress={resendCode} />
+        <Button title="Reenviar Código" preset="outline" onPress={resendCode} />
       </Box>
-      <Text mt="s300" textAlign="center" medium>
-        Não recebeu o código?
-      </Text>
-      <Text textAlign="center" color="primary" bold onPress={resendCode}>
-        Reenviar
-      </Text>
+      <Box mt="s42">
+        <Text textAlign="center" medium>
+          Não recebeu o código?
+        </Text>
+        <Text textAlign="center" color="primary" bold onPress={resendCode}>
+          Reenviar
+        </Text>
+      </Box>
     </Screen>
   );
 }

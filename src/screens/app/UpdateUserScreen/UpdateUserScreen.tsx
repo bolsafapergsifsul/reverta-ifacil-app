@@ -8,10 +8,8 @@ import {zodResolver} from '@hookform/resolvers/zod';
 import {FormTextInput} from '../../../components/Form/FormTextInput';
 import {Button} from '../../../components/Button/Button';
 import {Box} from '../../../components/Box/Box';
-
 import {UserAVatar} from '../../../components/UserAvatar/UserAvatar';
 import {useUserUpdate} from '../../../domain/User/useCases/useUserUpdate';
-
 import {
   launchImageLibrary,
   ImagePickerResponse,
@@ -81,7 +79,6 @@ export function UpdateUserScreen({
     });
 
     formData.append('public_id', `avatar_user_${route.params.user.id}`);
-
     formData.append('upload_preset', uploadPreset);
 
     const response = await fetch(
@@ -93,9 +90,9 @@ export function UpdateUserScreen({
     );
 
     const json = await response.json();
-
     return json.secure_url;
   }
+
   async function submitForm(data: UpdateUserSchema) {
     setLoading(true);
 
@@ -119,8 +116,8 @@ export function UpdateUserScreen({
 
   return (
     <Screen canGoBack scrolllable>
-      <Text preset="headingSmall" medium mt="s20" mb="s24">
-        Atualizar dados de usuário
+      <Text preset="headingMedium" bold mt="s26" mb="s24">
+        Meus dados
       </Text>
 
       <UserAVatar
@@ -159,7 +156,7 @@ export function UpdateUserScreen({
         boxProps={{mb: 's24'}}
       />
 
-      <Box justifyContent="center" alignItems="center">
+      <Box mb="s20">
         <Button
           title="Atualizar"
           disabled={!formState.isValid || isLoading || loading}

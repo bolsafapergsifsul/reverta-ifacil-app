@@ -40,7 +40,7 @@ export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
   }
 
   return (
-    <Screen canGoBack>
+    <Screen scrolllable>
       <Text preset="headingMedium" mt="s26" bold>
         Bem-vindo de volta!
       </Text>
@@ -65,11 +65,10 @@ export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
         mt="s14"
         color="primary"
         bold
-        onPress={navigateToForgotPasswordScreen}
-        semiBold>
+        onPress={navigateToForgotPasswordScreen}>
         Esqueceu a senha?
       </Text>
-      <Box alignItems="center" mt="s42">
+      <Box mt="s42" gap="s16">
         <Button
           title="Entrar"
           loading={isLoading}
@@ -77,18 +76,19 @@ export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
           onPress={handleSubmit(submitForm)}
         />
       </Box>
-      {/* <SocialAuthButtons title="Ou entre com" /> */}
-      <Text mt="s123" textAlign="center" medium>
-        Ainda não tem uma conta?
-      </Text>
-      <Text
-        mt="s2"
-        textAlign="center"
-        color="primary"
-        bold
-        onPress={navigateToSingUpScreen}>
-        Faça seu cadastro
-      </Text>
+      <Box mt="s60">
+        <Text textAlign="center" medium>
+          Ainda não tem uma conta?
+        </Text>
+        <Text
+          mt="s2"
+          textAlign="center"
+          color="primary"
+          bold
+          onPress={navigateToSingUpScreen}>
+          Faça seu cadastro
+        </Text>
+      </Box>
     </Screen>
   );
 }

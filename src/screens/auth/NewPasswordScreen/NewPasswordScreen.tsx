@@ -19,6 +19,7 @@ const resetParam: AuthStackParamList['SuccessScreen'] = {
   icon: {
     name: 'stickerCheck',
     color: 'primary',
+    size: 120,
   },
 };
 
@@ -62,7 +63,7 @@ export function NewPasswordScreen({
         control={control}
         name="newPassword"
         placeholder="Digite uma nova senha"
-        boxProps={{mt: 's24'}}
+        boxProps={{mt: 's46'}}
       />
       <FormPasswordInput
         control={control}
@@ -70,7 +71,7 @@ export function NewPasswordScreen({
         placeholder="Confirme sua nova senha"
         boxProps={{mt: 's24'}}
       />
-      <Box mt="s42" alignItems="center">
+      <Box mt="s42">
         <Button
           title="Confirmar"
           loading={isLoading}

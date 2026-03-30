@@ -2,33 +2,42 @@ import {createTheme} from '@shopify/restyle';
 import {BoxProps} from '../components/Box/Box';
 
 export const palette = {
-  green700: '#2E7D32',
-  green600: '#388E3C',
-  green100: "#E8F5E9",
+  // Brand greens
+  green500: '#22C55E',
+  greenSoft: '#DCFCE7',
+
+  // Neutrals
   white: '#FFFFFF',
   black: '#000000',
-  gray50: '#F5F7F6',
-  gray100: '#E5E7EB',
-  gray500: '#6B7280',
-  gray900: '#1F2937',
-  orange: '#F9A825',
+  gray50: '#F4F4F5',
+  gray100: '#E4E4E7',
+  gray500: '#71717A',
+  gray600: '#A1A1AA',
+  gray900: '#18181B',
+
+  // Status & accents
+  amber: '#F59E0B',
   red: '#D32F2F',
-  blue: '#0288D1',
-  brown: '#8D6E63'
+  teal: '#14B8A6',
+  brown: '#8D6E63',
 };
 
 export const theme = createTheme({
   colors: {
     ...palette,
-    primary: palette.green700,
-    background: palette.gray50,
-    backgroundSmooth: palette.green100,
+    primary: palette.green500,
+    background: palette.white,
+    backgroundSmooth: palette.greenSoft,
     textPrimary: palette.gray900,
     textSecondary: palette.gray500,
-    success: palette.green700,
-    warning: palette.orange,
+    success: palette.green500,
+    warning: palette.amber,
     error: palette.red,
-    info: palette.blue
+    info: palette.teal,
+    // Aliases used in existing code
+    greenPrimary: palette.green500,
+    greenPrimaryLight: palette.greenSoft,
+    gray1: palette.gray50,
   },
   spacing: {
     s2: 2,

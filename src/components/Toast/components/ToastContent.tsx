@@ -25,7 +25,7 @@ export function ToastContent({toast, hideToast}: Props) {
       {toast.action && (
         <Text
           ml="s8"
-          color="black1"
+          color="black"
           preset="paragraphMedium"
           bold
           onPress={() => {

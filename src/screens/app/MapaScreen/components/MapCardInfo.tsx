@@ -43,7 +43,7 @@ export function MapCardInfo(ecoPointData: EcoPointNearbyResult) {
 }
 
 const $shadowProps: BoxProps = {
-  shadowColor: 'black1',
+  shadowColor: 'black',
   shadowOpacity: 0.1,
   shadowRadius: 15,
   shadowOffset: {width: 0, height: 4},
