@@ -25,6 +25,7 @@
     "react-native": "0.79.2",
     "react-native-calendars": "^1.1313.0",
     "react-native-element-dropdown": "^2.12.4",
+    "react-native-geolocation-service": "^5.3.1",
     "react-native-image-crop-picker": "^0.51.1",
     "react-native-image-picker": "^8.2.1",
     "react-native-maps": "1.20.1",
@@ -58,5 +59,6 @@
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "packageManager": "yarn@4.9.2+sha256.ca4310f8ba997b4643a000ce512d9772e01c1485df35511114b325315960acb7"
 }

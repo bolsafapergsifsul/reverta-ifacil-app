@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import {Box, BoxProps} from '../Box/Box';
 import {useAppTheme} from '../../hooks/useAppTheme';
-import {$shadowProps, palette} from '../../theme/theme';
+import {palette} from '../../theme/theme';
 import {$fontFamily, $fontSizes, Text} from '../Text/Text';
 
 export interface TextInputProps extends RNTextInputProps {
@@ -31,10 +31,16 @@ export function TextInput({
   const $textInputContainer: BoxProps = {
     flexDirection: 'row',
     borderWidth: errorMessage ? 2 : 1,
-    borderColor: errorMessage ? 'error' : 'gray4',
+    borderColor: errorMessage ? 'error' : 'gray100',
     borderRadius: 's8',
     paddingHorizontal: 's18',
     paddingVertical: 's14',
+    backgroundColor: 'background',
+    shadowColor: 'black',
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    shadowOffset: {width: 0, height: 2},
+    elevation: 2,
   };
 
   function focusInput() {
@@ -42,12 +48,9 @@ export function TextInput({
   }
 
   return (
-    <Box flexGrow={1} flexShrink={1} {...boxProps}>
-      <Pressable onPress={focusInput} {...$shadowProps}>
-        <Box
-          {...$textInputContainer}
-          {...containerProps}
-          backgroundColor="white">
+    <Box flexShrink={1} {...boxProps}>
+      <Pressable onPress={focusInput}>
+        <Box {...$textInputContainer} {...containerProps}>
           {LeftComponent && (
             <Box justifyContent="center" mr="s12">
               {LeftComponent}
@@ -56,7 +59,7 @@ export function TextInput({
           <RNTextInput
             autoCapitalize="none"
             ref={inputRef}
-            placeholderTextColor={colors.gray3}
+            placeholderTextColor={colors.textSecondary}
             style={$textInputStyle}
             {...rnTextInputProps}
           />
@@ -80,7 +83,7 @@ export const $textInputStyle: TextStyle = {
   padding: 0,
   flexGrow: 1,
   flexShrink: 1,
-  color: palette.black1,
+  color: palette.gray900,
   fontFamily: $fontFamily.regular,
   ...$fontSizes.paragraphSmall,
 };

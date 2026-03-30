@@ -28,7 +28,7 @@ export function ProfileAvatar({
           }}
         />
       ) : (
-        <Icon size={size} name="profileFill" color="gray3" />
+        <Icon size={size} name="profileFill" color="gray500" />
       )}
     </Pressable>
   );

@@ -26,15 +26,15 @@ export const buttonPresets: Record<
     },
     disabled: {
       container: {
-        backgroundColor: 'gray4',
+        backgroundColor: 'gray100',
       },
-      content: {color: 'gray2'},
+      content: {color: 'gray500'},
     },
   },
   outline: {
     default: {
       container: {
-        borderWidth: 3,
+        borderWidth: 2,
         borderColor: 'primary',
       },
       content: {
@@ -44,9 +44,9 @@ export const buttonPresets: Record<
     disabled: {
       container: {
         borderWidth: 1,
-        borderColor: 'gray4',
+        borderColor: 'gray100',
       },
-      content: {color: 'gray2'},
+      content: {color: 'gray500'},
     },
   },
 };

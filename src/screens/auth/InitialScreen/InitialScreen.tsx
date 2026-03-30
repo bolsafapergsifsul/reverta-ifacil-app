@@ -18,21 +18,28 @@ export function InitialScreen({navigation}: AuthScreenProps<'InitialScreen'>) {
 
   return (
     <Screen>
-      <Box mt="s95">
+      <Box mt="s95" alignItems="center">
         <Image
           source={require('../../../assets/images/image-initial-screen.png')}
-          style={{width: 'auto'}}
+          style={{width: 280, height: 220}}
+          resizeMode="contain"
         />
       </Box>
-      <Box alignItems="center" mt="s95">
-        <Icon name="logo" size={86} />
-        <Text preset="headingLarge" mt="s30" bold>
-          Reverta IFácil
+      <Box alignItems="center" mt="s30">
+        <Box flexDirection="row" alignItems="center" gap="s10">
+          <Icon name="logo" size={36} />
+          <Text preset="headingMedium" bold>
+            Reverta IFácil
+          </Text>
+        </Box>
+        <Text preset="paragraphMedium" mt="s30" textAlign="center">
+          Agende coletas e descarte seus resíduos corretamente
         </Text>
-        <Button title="Entrar" mt="s78" onPress={navigateToLoginScreen} />
+      </Box>
+      <Box mt="s30" gap="s14">
+        <Button title="Entrar" onPress={navigateToLoginScreen} />
         <Button
           title="Quero me cadastrar"
-          mt="s26"
           preset="outline"
           onPress={navigateToSelectTypeUserScreen}
         />

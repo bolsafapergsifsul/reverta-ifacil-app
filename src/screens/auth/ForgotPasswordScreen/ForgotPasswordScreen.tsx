@@ -1,7 +1,6 @@
 import React from 'react';
 import {Screen} from '../../../components/Screen/Screen';
 import {Text} from '../../../components/Text/Text';
-
 import {Box} from '../../../components/Box/Box';
 import {Button} from '../../../components/Button/Button';
 import {AuthScreenProps} from '../../../routes/navigationType';
@@ -62,7 +61,7 @@ export function ForgotPasswordScreen({
         placeholder="Digite seu e-mail"
         boxProps={{mt: 's24'}}
       />
-      <Box mt="s42" alignItems="center">
+      <Box mt="s42">
         <Button
           title="Enviar código"
           loading={isLoading}
@@ -70,12 +69,14 @@ export function ForgotPasswordScreen({
           onPress={handleSubmit(submitForm)}
         />
       </Box>
-      <Text mt="s371" textAlign="center" medium>
-        Lembrou da senha?
-      </Text>
-      <Text textAlign="center" color="primary" bold onPress={navigateToLogin}>
-        Faça seu login
-      </Text>
+      <Box mt="s60">
+        <Text textAlign="center" medium>
+          Lembrou da senha?
+        </Text>
+        <Text textAlign="center" color="primary" bold onPress={navigateToLogin}>
+          Faça seu login
+        </Text>
+      </Box>
     </Screen>
   );
 }

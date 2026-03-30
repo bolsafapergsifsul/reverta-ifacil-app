@@ -1,7 +1,7 @@
 import z from 'zod';
 
 export const codeVerificationSchema = z.object({
-  code: z.string().length(4, 'O código deve ter 4 dígitos'),
+  code: z.string().length(4, 'O código deve ter 4 caracteres'),
 });
 
 export type CodeVerificationSchema = z.infer<typeof codeVerificationSchema>;

@@ -39,17 +39,17 @@ export function ColetasScreen({
   );
 
   return (
-    <Screen flex={1} HeaderComponent={<Header />} noPaddingHorizontal>
+    <Screen flex={1} HeaderComponent={<Header />} noPaddingHorizontal backgroundColor="background">
       <Box paddingHorizontal="s31" flex={1}>
         <Text preset="headingSmall" bold mt="s20" mb="s20">
           Histórico de coletas
         </Text>
         {isError && (
           <Box>
-            <Box>
-              <Text preset="headingMedium" semiBold textAlign="center">
-                Erro ao carregar coletas.
-              </Text>
+            <Text preset="headingMedium" semiBold textAlign="center">
+              Erro ao carregar coletas.
+            </Text>
+            <Box mt="s16">
               <Button title="Recarregar" onPress={() => refetch()} />
             </Box>
           </Box>
@@ -60,11 +60,12 @@ export function ColetasScreen({
               Você não possui coletas, clique no botão abaixo para procurar o
               ecoponto mais próximo e agendar uma coleta.
             </Text>
-            <Button
-              mt="s30"
-              title="Ir para o mapa"
-              onPress={() => navigation.navigate('MapaScreen')}
-            />
+            <Box mt="s30">
+              <Button
+                title="Ir para o mapa"
+                onPress={() => navigation.navigate('MapaScreen')}
+              />
+            </Box>
           </Box>
         )}
         {isLoading || isFetching ? (

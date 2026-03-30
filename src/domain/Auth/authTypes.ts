@@ -45,6 +45,8 @@ export interface SignUpDataAPI {
   document: string; // CPF or CNPJ
   zipCode: string; // CEP
   numberAddress: string;
+  latitude: number;
+  longitude: number;
 }
 
 export interface SignUpData {
@@ -56,4 +58,6 @@ export interface SignUpData {
   document: string;
   zipCode: string;
   numberAddress: string;
+  latitude: number;
+  longitude: number;
 }

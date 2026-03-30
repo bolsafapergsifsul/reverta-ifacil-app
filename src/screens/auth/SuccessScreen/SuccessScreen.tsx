@@ -14,16 +14,18 @@ export function SuccessScreen({
     navigation.goBack();
   }
   return (
-    <Screen>
-      <Box alignItems="center" mt="s238">
+    <Screen flex={1}>
+      <Box flex={1} alignItems="center" justifyContent="center">
         <Icon {...route.params.icon} />
-        <Text preset="headingMedium" mt="s42" bold>
+        <Text preset="headingMedium" mt="s42" bold textAlign="center">
           {route.params.title}
         </Text>
-        <Text mt="s10" medium>
+        <Text mt="s10" medium textAlign="center">
           {route.params.description}
         </Text>
-        <Button title="Fazer login" mt="s42" onPress={goBackToBegin} />
+        <Box mt="s42" alignSelf="stretch">
+          <Button title="Fazer login" onPress={goBackToBegin} />
+        </Box>
       </Box>
     </Screen>
   );

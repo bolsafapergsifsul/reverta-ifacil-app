@@ -29,12 +29,8 @@ export function ColetaInfoScreen({
   if (collect) {
     date = new Date(collect.scheduledAt);
   }
-  let isCollectInProgress = null;
-  if (collect?.status === 'IN_PROGRESS' || collect?.status === 'PENDING') {
-    isCollectInProgress = true;
-  } else {
-    isCollectInProgress = false;
-  }
+  const isCollectInProgress =
+    collect?.status === 'IN_PROGRESS' || collect?.status === 'PENDING';
 
   function cancelCollectFunction() {
     Alert.alert(
@@ -63,7 +59,6 @@ export function ColetaInfoScreen({
       ) : (
         <Box mt="s26">
           <Text preset="headingSmall" bold>
-            {' '}
             {collect?.status === 'PENDING' || collect?.status === 'IN_PROGRESS'
               ? 'Dados da sua coleta em andamento'
               : 'Dados da sua coleta'}
@@ -71,11 +66,12 @@ export function ColetaInfoScreen({
           <Box
             mt="s20"
             backgroundColor="white"
-            borderRadius="s13"
+            borderRadius="s10"
             padding="s16">
-            <Text
-              medium>{`${authCredentials.user.street}, ${authCredentials.user.numberAddress} - ${authCredentials.user.neighborhood}, ${authCredentials.user.city} - ${authCredentials.user.state}`}</Text>
-            <Text mt="s10" preset="paragraphMedium" medium color="greenPrimary">
+            <Text medium>
+              {`${authCredentials.user.street}, ${authCredentials.user.numberAddress} - ${authCredentials.user.neighborhood}, ${authCredentials.user.city} - ${authCredentials.user.state}`}
+            </Text>
+            <Text mt="s10" preset="paragraphMedium" medium color="primary">
               {date?.toLocaleDateString('pt-BR') +
                 ' - ' +
                 collect?.materials
@@ -83,30 +79,24 @@ export function ColetaInfoScreen({
                   .join(', ')}
             </Text>
           </Box>
-          <Box
-            flexDirection="row"
-            alignItems="center"
-            justifyContent="space-between"
-            gap="s10"
-            mt="s60">
-            {isCollectInProgress === true && (
-              <Box flexDirection="row" gap="s10">
-                <Button
-                  title="Reagendar coleta"
-                  flex={1}
-                  disabled={isCancelLoading}
-                  onPress={handleRescheduleScreen}
-                />
-                <Button
-                  title="Cancelar coleta"
-                  backgroundColor="red"
-                  flex={1}
-                  loading={isCancelLoading}
-                  onPress={cancelCollectFunction}
-                />
-              </Box>
-            )}
-          </Box>
+          {isCollectInProgress && (
+            <Box flexDirection="row" gap="s16" mt="s60">
+              <Button
+                title="Reagendar"
+                flex={1}
+                preset="outline"
+                disabled={isCancelLoading}
+                onPress={handleRescheduleScreen}
+              />
+              <Button
+                title="Cancelar"
+                flex={1}
+                backgroundColor="error"
+                loading={isCancelLoading}
+                onPress={cancelCollectFunction}
+              />
+            </Box>
+          )}
         </Box>
       )}
     </Screen>

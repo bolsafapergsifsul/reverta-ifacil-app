@@ -16,6 +16,7 @@ import {zodResolver} from '@hookform/resolvers/zod';
 import {FormTextInput} from '../../../components/Form/FormTextInput';
 import {useToastService} from '../../../services/toast/useToast';
 import {useCreateCollect} from '../../../domain/Collect/useCases/useCreateCollect';
+import {palette} from '../../../theme/theme';
 
 export function ScheduleCollectScreen({
   navigation,
@@ -64,9 +65,18 @@ export function ScheduleCollectScreen({
 
   return (
     <Screen canGoBack scrolllable>
-      <Box backgroundColor="white" borderRadius="s10" mt="s10" padding="s10">
-        <Text
-          bold>{`${authCredentials.user.street}, ${authCredentials.user.numberAddress} - ${authCredentials.user.neighborhood}, ${authCredentials.user.city} - ${authCredentials.user.state}`}</Text>
+      <Box
+        backgroundColor="white"
+        borderRadius="s10"
+        mt="s10"
+        padding="s10"
+        flexDirection="row"
+        alignItems="center"
+        gap="s8">
+        <Text color="primary">📍</Text>
+        <Text bold flex={1}>
+          {`${authCredentials.user.street}, ${authCredentials.user.numberAddress} - ${authCredentials.user.neighborhood}, ${authCredentials.user.city} - ${authCredentials.user.state}`}
+        </Text>
       </Box>
       <Text preset="paragraphMedium" bold mt="s16" mb="s10">
         Quando será sua coleta?
@@ -76,7 +86,7 @@ export function ScheduleCollectScreen({
           [selectedDate]: {
             selected: true,
             marked: true,
-            selectedColor: '#319E42',
+            selectedColor: palette.green500,
           },
         }}
         minDate={today}
@@ -84,8 +94,8 @@ export function ScheduleCollectScreen({
           setSelectedDate(day.dateString);
         }}
       />
-      <Text preset="paragraphMedium" bold mt="s10">
-        Quais materiais serão Coletados?
+      <Text preset="paragraphMedium" bold mt="s16" mb="s8">
+        Quais materiais serão coletados?
       </Text>
       <MultiSelect
         mode="modal"
@@ -93,12 +103,12 @@ export function ScheduleCollectScreen({
         labelField="name"
         valueField="id"
         value={selectedMaterials}
-        placeholder="Selecione os materiais"
+        placeholder="Selecione uma ou mais opções"
         onChange={item => {
           setSelectedMaterials(item);
         }}
       />
-      <Text preset="paragraphMedium" bold mt="s10">
+      <Text preset="paragraphMedium" bold mt="s16" mb="s8">
         Qual o peso aproximado da sua separação?
       </Text>
       <FormTextInput
@@ -106,7 +116,7 @@ export function ScheduleCollectScreen({
         name="weight"
         placeholder="Digite o peso aproximado"
       />
-      <Text preset="paragraphMedium" bold mt="s10">
+      <Text preset="paragraphMedium" bold mt="s16" mb="s8">
         Tem alguma observação?
       </Text>
       <FormTextInput
@@ -116,7 +126,7 @@ export function ScheduleCollectScreen({
         multiline={true}
         numberOfLines={1}
       />
-      <Box mt="s20" alignItems="center">
+      <Box mt="s20" mb="s20">
         <Button
           title="Agendar Coleta"
           disabled={!formState.isValid || isLoading}

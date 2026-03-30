@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {Screen} from '../../../components/Screen/Screen';
-
 import {useEcoPointGetAll} from '../../../domain/EcoPoint/useCases/useEcoPointGetAll';
 import {AppTabScreenProps} from '../../../routes/navigationType';
+import {useNavigation} from '@react-navigation/native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {useAuthCredentials} from '../../../services/authCredentials/useAuthCredentials';
 import {
@@ -17,9 +17,7 @@ import {Box} from '../../../components/Box/Box';
 import {Text} from '../../../components/Text/Text';
 import {Icon} from '../../../components/Icon/Icon';
 import {useDebounce} from '../../../hooks/useDebounce';
-
 import {EcoPointNearbyResult} from '../../../domain/EcoPoint/ecoPointTypes';
-
 import {ecoPointService} from '../../../domain/EcoPoint/ecoPointService';
 import {useSearchNearby} from '../../../domain/EcoPoint/useCases/useSearchNearby';
 import {MapCardInfo} from './components/MapCardInfo';
@@ -40,6 +38,8 @@ export function MapaScreen({}: AppTabScreenProps<'MapaScreen'>) {
     longitudeDelta: 0.0421,
   };
   const {colors} = useAppTheme();
+  const navigation = useNavigation();
+
   function permissionLocation() {
     if (Platform.OS === 'android') {
       PermissionsAndroid.request(
@@ -87,20 +87,23 @@ export function MapaScreen({}: AppTabScreenProps<'MapaScreen'>) {
               key={ecoPoint.id}
               title={ecoPoint.name}
               pinColor={colors.primary}
+              onPress={() =>
+                navigation.navigate('EcoPointScreen', {id: ecoPoint.id})
+              }
             />
           ))}
         </MapView>
       </Box>
       <Box backgroundColor="white" flex={1} paddingHorizontal="s31">
         <Text marginTop="s20" preset="headingSmall" mb="s10" bold>
-          Veja os Ecopontos e EcoColetores perto de você
+          Veja os EcoContos perto de você
         </Text>
         <Box mb="s10">
           <TextInput
             value={search}
             onChangeText={setSearch}
-            placeholder="Buscar por CEP"
-            LeftComponent={<Icon name="busca" fillColor="gray4" />}
+            placeholder="Digite seu CEP"
+            LeftComponent={<Icon name="busca" fillColor="gray500" />}
           />
         </Box>
         <FlatList
@@ -115,9 +118,3 @@ export function MapaScreen({}: AppTabScreenProps<'MapaScreen'>) {
     </Screen>
   );
 }
-
-// const styles = StyleSheet.create({
-//   map: {
-//     ...StyleSheet.absoluteFillObject,
-//   },
-// });

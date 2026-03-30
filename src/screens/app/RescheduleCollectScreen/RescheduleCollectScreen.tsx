@@ -7,6 +7,7 @@ import {useToastService} from '../../../services/toast/useToast';
 import {Calendar} from 'react-native-calendars';
 import {Button} from '../../../components/Button/Button';
 import {Box} from '../../../components/Box/Box';
+import {palette} from '../../../theme/theme';
 
 export function RescheduleCollectScreen({
   navigation,
@@ -35,7 +36,6 @@ export function RescheduleCollectScreen({
           },
         ],
       }),
-
     onError: message => showToast({message, type: 'error'}),
   });
 
@@ -58,8 +58,8 @@ export function RescheduleCollectScreen({
   }
 
   return (
-    <Screen>
-      <Text mt="s30" mb="s30" preset="headingSmall" bold>
+    <Screen canGoBack>
+      <Text mt="s30" mb="s16" preset="headingSmall" bold>
         Escolha uma nova data para sua coleta
       </Text>
       <Calendar
@@ -67,7 +67,7 @@ export function RescheduleCollectScreen({
           [selectedDate]: {
             selected: true,
             marked: true,
-            selectedColor: '#319E42',
+            selectedColor: palette.green500,
           },
         }}
         minDate={today}
@@ -75,7 +75,7 @@ export function RescheduleCollectScreen({
           setSelectedDate(day.dateString);
         }}
       />
-      <Box mt="s30" alignItems="center">
+      <Box mt="s30">
         <Button
           title="Reagendar"
           onPress={rescheduleCollectUser}

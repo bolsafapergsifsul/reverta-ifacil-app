@@ -8,14 +8,24 @@ import {useNavigation} from '@react-navigation/native';
 export function CollectCard(data: CollectData) {
   const navigation = useNavigation();
   const date = new Date(data.scheduledAt);
+
   const statusColor: ThemeColors =
     data.status === 'PENDING'
-      ? 'gray1'
+      ? 'gray100'
       : data.status === 'IN_PROGRESS'
       ? 'greenPrimaryLight'
       : data.status === 'COMPLETED'
       ? 'greenPrimary'
-      : 'red';
+      : 'error';
+
+  const statusTextColor: ThemeColors =
+    data.status === 'PENDING'
+      ? 'textSecondary'
+      : data.status === 'IN_PROGRESS'
+      ? 'primary'
+      : data.status === 'COMPLETED'
+      ? 'white'
+      : 'white';
 
   const statusText =
     data.status === 'PENDING'
@@ -31,24 +41,32 @@ export function CollectCard(data: CollectData) {
       collectId: data.id,
     });
   }
+
   return (
     <PressableBox onPress={navigateToColetaInfoScreen}>
-      <Box backgroundColor="white" padding="s16" borderRadius="s13" mb="s20">
-        <Text preset="paragraphLarge" color="greenPrimary" bold>
+      <Box backgroundColor="white" padding="s16" borderRadius="s10" mb="s16" borderWidth={1} borderColor="gray100">
+        <Text preset="paragraphMedium" color="primary" bold>
           Coleta no {data.ecoPoint.name}
         </Text>
-        <Text>
-          <Text semiBold>Data:</Text> {date.toLocaleDateString('pt-BR')}
+        <Text mt="s8" preset="paragraphSmall">
+          <Text preset="paragraphSmall" semiBold>
+            Data:{' '}
+          </Text>
+          {date.toLocaleDateString('pt-BR')}
         </Text>
-
-        <Text>
-          <Text semiBold>Materiais a serem coletados:</Text>{' '}
+        <Text mt="s4" preset="paragraphSmall">
+          <Text preset="paragraphSmall" semiBold>
+            Materiais:{' '}
+          </Text>
           {data.materials.map(material => material.material.name).join(', ')}
         </Text>
-        <Box flexDirection="row" alignItems="center" gap="s4">
-          {/* <Text semiBold>Status:</Text> */}
-          <Box backgroundColor={statusColor} padding="s4">
-            <Text color="white" bold>
+        <Box mt="s8" alignSelf="flex-start">
+          <Box
+            backgroundColor={statusColor}
+            paddingHorizontal="s10"
+            paddingVertical="s4"
+            borderRadius="s60">
+            <Text preset="paragraphCaption" color={statusTextColor} bold>
               {statusText}
             </Text>
           </Box>
